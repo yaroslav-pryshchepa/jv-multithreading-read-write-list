@@ -20,19 +20,23 @@ public class ReadWriteList<E> {
 
     public E get(int index) {
         lock.readLock().lock();
+        E result;
         try {
-            return list.get(index);
+            result = list.get(index);
         } finally {
             lock.readLock().unlock();
         }
+        return result;
     }
 
     public int size() {
         lock.readLock().lock();
+        int result;
         try {
-            return list.size();
+            result = list.size();
         } finally {
             lock.readLock().unlock();
         }
+        return result;
     }
 }
